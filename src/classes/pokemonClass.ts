@@ -1,28 +1,27 @@
-import { StatType } from "../helpers/types/statsType";
+import PokemonInterface from "../helpers/types/pokemonInterface";
 
 export default class Pokemon {
-  name: string;
-  age: number;
-  stats: StatType;
-  constructor(name: string, age: number, stat: StatType) {
-    this.name = name;
-    this.age = age;
-    this.stats = stat;
-  }
+  constructor(public pokemon: PokemonInterface) {}
   sayName() {
-    return this.name;
+    return this.pokemon.name;
   }
   attack(target: Pokemon) {
-    if (target.stats.hp < 0) {
+    if (target.pokemon.stats.hp < 0) {
       return "Dead";
     }
-    const damageBlocked = target.stats.defense * 0.43;
-    const totalDamage = this.stats.attack - damageBlocked;
+    const damageBlocked = target.pokemon.stats.defense * 0.43;
+    const totalDamage = this.pokemon.stats.attack - damageBlocked;
 
-    target.stats.hp = target.stats.hp - totalDamage;
-    return target.stats.hp;
+    target.pokemon.stats.hp = target.pokemon.stats.hp - totalDamage;
+    return target.pokemon.stats.hp;
+  }
+  compareTypes(target: Pokemon) {
+    target.pokemon.type.map((el) => {
+      console.log(el.name);
+    });
+    console.log(this.pokemon.type);
   }
   getStats() {
-    return this.stats;
+    return this.pokemon.stats;
   }
 }
