@@ -1,6 +1,6 @@
-import { StatType } from "../types/statsType";
+import { StatType } from "../helpers/types/statsType";
 
-export class Hero {
+export default class Pokemon {
   name: string;
   age: number;
   stats: StatType;
@@ -12,7 +12,7 @@ export class Hero {
   sayName() {
     return this.name;
   }
-  attack(target: Hero) {
+  attack(target: Pokemon) {
     if (target.stats.hp < 0) {
       return "Dead";
     }
@@ -20,8 +20,6 @@ export class Hero {
     const totalDamage = this.stats.attack - damageBlocked;
 
     target.stats.hp = target.stats.hp - totalDamage;
-    console.log("blocked", damageBlocked);
-    console.log("Total dealed", totalDamage);
     return target.stats.hp;
   }
   getStats() {

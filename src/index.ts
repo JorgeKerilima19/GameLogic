@@ -1,13 +1,14 @@
-import { Hero } from "./classes/heroClass";
-import { HeroStats } from "./classes/heroStats";
+import Pokemon from "./classes/pokemonClass";
+import TypeClass from "./classes/typeClass";
+import StatType from "./helpers/types/statsType";
+import { fireElement } from "./helpers/elements/pokemonTypes";
 
-const hero1Stats = new HeroStats({ hp: 10, attack: 5, defense: 2 });
-const hero1 = new Hero("Aura", 26, hero1Stats);
+const hero1Stats: StatType = { hp: 10, attack: 5, defense: 2 };
+const hero1 = new Pokemon("Aura", 26, hero1Stats);
 
-const hero2Stats = new HeroStats({ hp: 8, attack: 2, defense: 10 });
-const hero2 = new Hero("Lera", 26, hero2Stats);
+const hero2Stats: StatType = { hp: 8, attack: 3, defense: 12 };
+const hero2 = new Pokemon("Lera", 26, hero2Stats);
 
-console.log(hero1.attack(hero2));
-console.log(hero1.attack(hero2));
-console.log(hero1.attack(hero2));
-console.log(hero1.attack(hero2));
+const FireClass = new TypeClass(fireElement);
+
+console.log(FireClass.getElementType());
